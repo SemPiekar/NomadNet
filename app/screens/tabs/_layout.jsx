@@ -8,7 +8,7 @@ export default function TabsLayout() {
         headerShown: false,
         tabBarLabel: () => null,
         tabBarStyle: {
-          height: 80,
+          height: 63,
           paddingBottom: 5,
           paddingTop: 10,
         },
@@ -22,10 +22,24 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
+        name="diary"
+        options={{
+          title: "Diary",
+          tabBarIcon: () => <Ionicons name="add-outline" size={24} />,
+        }}
+      />
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          title: "Notifications",
+          tabBarIcon: () => <Ionicons name="notifications-outline" size={24} />,
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
-          tabBarIcon: () => <Ionicons name="home-outline" size={24} />,
+          tabBarIcon: () => <Ionicons name="person-circle-outline" size={24} />,
         }}
       />
     </Tabs>

@@ -9,23 +9,24 @@ export default function WelcomeScreen() {
       source={require("../assets/images/WelcomeScreen.png")}
       style={styles.background}
     >
-      <Logo />
-      <Text style={styles.title}>Explore a new world with us</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={[styles.buttonWrapper, styles.registerButton]}
-          onPress={() => router.push("/screens/auth/register")}
-        >
-          <Text style={styles.buttonText}>REGISTER</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.buttonWrapper, styles.loginButton]}
-          onPress={() => router.push("/screens/auth/login")}
-        >
-          <Text style={styles.buttonText}>LOGIN</Text>
-        </TouchableOpacity>
+      <View style={styles.container}>
+        <Logo />
+        <Text style={styles.title}>Explore a new world with us</Text>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={[styles.buttonWrapper, styles.registerButton]}
+            onPress={() => router.push("/screens/auth/register")}
+          >
+            <Text style={styles.buttonText}>REGISTER</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.buttonWrapper, styles.loginButton]}
+            onPress={() => router.push("/screens/auth/login")}
+          >
+            <Text style={styles.buttonText}>LOGIN</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <Button color="#000" title="To the app" onPress={() => router.push("/screens/tabs/home")} />
     </ImageBackground>
   );
 }
@@ -33,24 +34,29 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    justifyContent: "center",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
     alignItems: "center",
   },
   title: {
     fontSize: 45,
-    position: "absolute",
-    width: 312,
-    height: 182,
-    left: 22,
-    top: 437,
-    fontWeight: "400",
+    textAlign: "center",
+    fontWeight: "700",
+    letterSpacing: 3,
     lineHeight: 55,
     color: "#FFF",
+    marginTop: 400,
+    marginRight: 50,
+    width: 300,
+    textAlign: "left"
   },
   buttonContainer: {
-    position: "absolute",
-    top: 650, 
+    width: "100%",
     alignItems: "center",
+    gap: 20,
+    marginBottom: 50,
   },
   buttonWrapper: {
     width: 359,
@@ -61,11 +67,9 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: "#000",
-    marginBottom: 20,
   },
   registerButton: {
     backgroundColor: "#000",
-    marginBottom: 20,
   },
   buttonText: {
     color: "#FFF",
