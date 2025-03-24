@@ -36,30 +36,30 @@ export default function LoginScreen() {
       <View style={styles.container}>
         <Logo />
         <View style={styles.buttonContainer}>
-        <TextInput
-          placeholder="Email Address"
-          placeholderTextColor="rgba(0,0,0, 0.5)"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TextInput
-          placeholder="Password"
-          placeholderTextColor="rgba(0,0,0, 0.5)"
-          secureTextEntry={true}
-          autoCapitalize="none"
-          style={styles.input}
-          value={password}
-          onChangeText={setPassword}
-        />
-        <TouchableOpacity style={styles.login} onPress={handleLogin}>
-          <Text style={styles.loginText}>LOGIN</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.signupLink} onPress={() => router.push("./register")}> 
-          <Text style={styles.signupText}>Don't have an account? Sign up</Text>
-        </TouchableOpacity>
+          <TextInput
+            placeholder="Email Address"
+            placeholderTextColor="rgba(0,0,0, 0.5)"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+          />
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="rgba(0,0,0, 0.5)"
+            secureTextEntry={true}
+            autoCapitalize="none"
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+          />
+          <TouchableOpacity style={styles.login} onPress={handleLogin}>
+            <Text style={styles.loginText}>LOGIN</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.signupLink} onPress={() => router.push("./register")}> 
+            <Text style={styles.signupText}>Don't have an account? Sign up</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ImageBackground>
@@ -69,21 +69,23 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    justifyContent: "center",
   },
   container: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    gap: 20,
+    paddingHorizontal: 20,
   },
   buttonContainer: {
     width: "100%",
     alignItems: "center",
     gap: 20,
-    marginBottom: 50,
+    marginBottom: 30,
   },
   input: {
-    width: 359,
+    width: "100%",
+    maxWidth: 400,
     height: 43,
     fontSize: 15,
     fontWeight: "700",
@@ -93,7 +95,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   login: {
-    width: 359,
+    width: "100%",
+    maxWidth: 400,
     height: 43,
     justifyContent: "center",
     alignItems: "center",
@@ -107,7 +110,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   signupLink: {
-    marginTop: 20,
+    marginTop: 10,
   },
   signupText: {
     color: "#FFFFFF",

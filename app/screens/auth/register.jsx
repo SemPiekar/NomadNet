@@ -1,16 +1,8 @@
-import React, { useState } from "react";
-import {
-  Text,
-  View,
-  ImageBackground,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { Button, ImageBackground, Text, TextInput, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { useRouter } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Logo from "../../../components/Logo";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState } from "react";
 
 const registerUser = async (email, password, confirmPassword) => {
   email = email.trim();
@@ -71,40 +63,44 @@ export default function RegisterScreen() {
       source={require("../../../assets/images/Register.png")}
       style={styles.background}
     >
-      <Logo />
-      <TextInput
-        placeholder="Email Address"
-        placeholderTextColor="rgba(0,0,0, 0.5)"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        style={styles.email}
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        placeholder="Password"
-        placeholderTextColor="rgba(0,0,0, 0.5)"
-        secureTextEntry
-        autoCapitalize="none"
-        style={styles.password}
-        value={password}
-        onChangeText={setPassword}
-      />
-      <TextInput
-        placeholder="Confirm Password"
-        placeholderTextColor="rgba(0,0,0, 0.5)"
-        secureTextEntry
-        autoCapitalize="none"
-        style={styles.confirmPassword}
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-      />
-      <TouchableOpacity style={styles.login} onPress={handleRegister}>
-        <Text style={styles.loginText}>REGISTER</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.signupLink} onPress={() => router.push("./login")}>
-        <Text style={styles.signupText}>Already have an account? Sign in</Text>
-      </TouchableOpacity>
+      <View style={styles.container}>
+        <Logo />
+        <View style={styles.buttonContainer}>
+          <TextInput
+            placeholder="Email Address"
+            placeholderTextColor="rgba(0,0,0, 0.5)"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+          />
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="rgba(0,0,0, 0.5)"
+            secureTextEntry={true}
+            autoCapitalize="none"
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+          />
+          <TextInput
+            placeholder="Confirm Password"
+            placeholderTextColor="rgba(0,0,0, 0.5)"
+            secureTextEntry={true}
+            autoCapitalize="none"
+            style={styles.input}
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+          />
+          <TouchableOpacity style={styles.login} onPress={handleRegister}>
+            <Text style={styles.loginText}>REGISTER</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.signupLink} onPress={() => router.push("./login")}> 
+            <Text style={styles.signupText}>Already have an account? Sign in</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </ImageBackground>
   );
 }
@@ -113,50 +109,34 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: "center",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "flex-end",
     alignItems: "center",
+    paddingHorizontal: 20,
   },
-  email: {
-    position: "absolute",
-    width: 359,
+  buttonContainer: {
+    width: "100%",
+    alignItems: "center",
+    gap: 20,
+    marginBottom: 30,
+  },
+  input: {
+    width: "100%",
+    maxWidth: 400,
     height: 43,
-    top: 530,
     fontSize: 15,
     fontWeight: "700",
     letterSpacing: 1,
     borderRadius: 28,
     backgroundColor: "rgba(255, 255, 255, 0.83)",
     paddingLeft: 20,
-  },
-  password: {
-    position: "absolute",
-    width: 359,
-    height: 43,
-    top: 590,
-    fontSize: 15,
-    fontWeight: "700",
-    letterSpacing: 1,
-    borderRadius: 28,
-    backgroundColor: "rgba(255, 255, 255, 0.83)",
-    paddingLeft: 20,
-  },
-  confirmPassword: {
-    position: "absolute",
-    width: 359,
-    height: 43,
-    top: 650,
-    fontSize: 15,
-    fontWeight: "700",
-    letterSpacing: 1,
-    borderRadius: 28,
-    backgroundColor: "rgba(255, 255, 255, 0.83)",
-    paddingLeft: 20,
-    
   },
   login: {
-    position: "absolute",
-    width: 359,
+    width: "100%",
+    maxWidth: 400,
     height: 43,
-    top: 710,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#000",
@@ -169,8 +149,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   signupLink: {
-    position: "absolute",
-    top: 770,
+    marginTop: 10,
   },
   signupText: {
     color: "#FFFFFF",
